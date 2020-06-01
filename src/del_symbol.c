@@ -6,20 +6,15 @@
 void del_symbol(char* text, int count)
 {
     setlocale(LC_ALL, "Russian"); //подключаем русский язык
-    for (int i = 0; i != count; i++) {
-        if (text[i] > 31 && text[i] < 192) { //проверка на лишние символы
-            for (int j = i; text[j] > 31 && text[j] < 192; j++) {
-                text[j] = text[j + 1]; //избавление от символов
-            }
+    char text2[count];
+    int i, j;
+    for (i = j = 0; i != count; i++){
+        if (text[i] != ' '){
+          text2[j++] = text[i];
         }
     }
-    for (int i = 0; i != count; i++) {
-        if (text[i] > 31 && text[i] < 192) {
-            del_symbol(
-                    text,
-                    count); //если символы всё ещё есть, вызываем функцию снова
-        }
-    }
+    text2[j] = '\0';
+    puts(text2);
 }
 void breaking_up(char* text, int size)
 {

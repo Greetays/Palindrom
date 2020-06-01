@@ -27,7 +27,7 @@ int main(int argc, char* argv[])
     for (int i = 0; i < size; i++) {
         printf("%c", text[i]);
     }
-    breaking_up(text, size);
+    breaking_up (text, size);
     //  fclose(argv[1]);//закрываем файл
     return 0;
 }

@@ -12,17 +12,18 @@ int main(int argc, char* argv[])
     text = (char*)malloc(CONST * sizeof(int)); //выделяем память под константу
     FILE* text_file;
     text_file = fopen(argv[1], "r"); //открываем файл для чтения
-    if (text_file != NULL) { //идёт проверка на NULL
+    if (text_file != NULL) {         //идёт проверка на NULL
         while (fgets(text, CONST, text_file)) { // получаем данные из файла
         }
     } else {
         printf("Ошибка: Аргумент не найден.\n ");
     }
-    for (int i = 0; text[i] != '\0'; i++){ //подсчёт размера в строке
-      size++;
+    for (int i = 0; text[i] != '\0'; i++) { //подсчёт размера в строке
+        size++;
     }
-    text = realloc(text, size * sizeof(int)); //перераспределям память под размер
-    printf ("Ваш текст:\n\n"); //вывод текста пользователя на экран
+    text = realloc(
+            text, size * sizeof(int)); //перераспределям память под размер
+    printf("Ваш текст:\n\n"); //вывод текста пользователя на экран
     for (int i = 0; i < size; i++) {
         printf("%c", text[i]);
     }

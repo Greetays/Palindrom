@@ -1,19 +1,32 @@
+#include "palindrom.h"
+#include <locale.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <locale.h>
-#define STR 100
+#define CONST 100000
 
-int main(int argc, char *argv[])
+int main(int argc, char* argv[])
 {
-    char text[STR]; //создаём массив символов
-    setlocale (LC_ALL, "Rus"); //подключаем русский язык
-    FILE *text_file; //принимаем указатель на файл
-    text_file = fopen (argv[1], "r"); //открываем файл для чтения
-    if(text_file != NULL){ //идёт проверка на NULL
-      while (fgets (text, STR, text_file)){ // получаем данные из файла
-        fprintf(stdout, "%s\n", text); //выводим данные в командную строку
-      }
+    int size = 0;
+    setlocale(LC_ALL, "Rus"); //подключаем русский язык
+    char* text = NULL; //создаём указатель на массив
+    text = (char*)malloc(CONST * sizeof(int)); //выделяем память под константу
+    FILE* text_file;
+    text_file = fopen(argv[1], "r"); //открываем файл для чтения
+    if (text_file != NULL) { //идёт проверка на NULL
+        while (fgets(text, CONST, text_file)) { // получаем данные из файла
+        }
+    } else {
+        printf("Ошибка: Аргумент не найден.\n ");
     }
-  //  fclose(argv[1]);//закрываем файл
-return 0;
+    for (int i = 0; text[i] != '\0'; i++){ //подсчёт размера в строке
+      size++;
+    }
+    text = realloc(text, size * sizeof(int)); //перераспределям память под размер
+    printf ("Ваш текст:\n\n"); //вывод текста пользователя на экран
+    for (int i = 0; i < size; i++) {
+        printf("%c", text[i]);
+    }
+    search_pal(text, size);
+    //  fclose(argv[1]);//закрываем файл
+    return 0;
 }

@@ -7,7 +7,7 @@
 int main(int argc, char* argv[])
 {
     int size = 0;
-    setlocale(LC_ALL, "Rus"); //подключаем русский язык
+    setlocale(LC_ALL, "Russian"); //подключаем русский язык
     char* text = NULL; //создаём указатель на массив
     text = (char*)malloc(CONST * sizeof(int)); //выделяем память под константу
     FILE* text_file;
@@ -26,7 +26,7 @@ int main(int argc, char* argv[])
     for (int i = 0; i < size; i++) {
         printf("%c", text[i]);
     }
-    search_pal(text, size);
+    breaking_up(text, size);
     //  fclose(argv[1]);//закрываем файл
     return 0;
 }

@@ -1,23 +1,23 @@
 #include "palindrom.h"
-#include <locale.h>
 #include <stdio.h>
-#include <string.h>
 
-void search_pal(char* prop, int count)
+void search_pal(char* text1, char* text2, int size)
 {
-    setlocale(LC_ALL, "Russian"); //подключаем русский язык
-    int i, j = 0;
-    char prop2[count];
-    count = count - 1;
-    for (i = count; i >= 0; i--) {
-        prop2[j] = prop[i];
-        j++;
+    if (comstr(text1, text2, size)
+        == 1) //вызываем функцию проверки на палиндром
+        puts(text1); //выводим палиндром
+}
+
+int comstr(char* text1, char* text2, int size)
+{
+    int count = 0;
+    while (*text1 == *text2 && count < size) { //проверяется каждая буква
+        text1++; text2++;
+        count++; //пополняем счётчик
     }
-    puts(prop);
-    puts(prop2);
-    if (strcmp(prop, prop2) == 0)
-        puts("да\n");
+
+    if (count == size) //если счётчик равен размеру, возвращаем 1
+        return 1;
     else
-        puts("нет\n");
-    printf("\n");
+        return 0;
 }

@@ -21,13 +21,14 @@ int main(int argc, char* argv[])
     for (int i = 0; text[i] != '\0'; i++) { //подсчёт размера в строке
         size++;
     }
-    text = realloc(
-            text, size * sizeof(int)); //перераспределям память под размер
+    text = realloc(text, size * sizeof(int)); //перераспределям память под размер текста
     printf("Ваш текст:\n\n"); //вывод текста пользователя на экран
     for (int i = 0; i < size; i++) {
         printf("%c", text[i]);
     }
-    breaking_up (text, size);
-    //  fclose(argv[1]);//закрываем файл
+    printf("\nВ тексте были найдены следующие "
+           "палиндромы:\n___________________\n\n");
+    breaking_up(text, size); //вызываем функцию разделения текста на предложения
+    printf("___________________\n");
     return 0;
 }
